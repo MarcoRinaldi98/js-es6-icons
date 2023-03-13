@@ -135,32 +135,19 @@ icon.forEach(element => {
 
 // Al cambio del contenuto della select mostro solo i box che hanno la value selezionata
 filtroDom.addEventListener('change', function() {
-    contentDom.innerHTML = '';
-    if (filtroDom.value == 'animal') {       
-        icon.filter(element => {
-            if (element.type == 'animal') {
-                contentDom.append(generateIconBox(element));
-            }
-        });
-    } else if (filtroDom.value == 'vegetable') {       
-        icon.filter(element => {
-            if (element.type == 'vegetable') {
-                contentDom.append(generateIconBox(element));
-            }
-        });
-    } else if (filtroDom.value == 'user') {       
-        icon.filter(element => {
-            if (element.type == 'user') {
-                contentDom.append(generateIconBox(element));
-            }
-        });
-    } else {
-        icon.forEach(element => {
+    contentDom.innerHTML = '';    
+    icon.filter(element => {
+        if (element.type == filtroDom.value) {
             contentDom.append(generateIconBox(element));
-        });
-    }
-    console.log(filtroDom.value);
+        } else if (filtroDom.value == 'all') {
+            contentDom.innerHTML = ''; 
+            icon.forEach(element => {
+                contentDom.append(generateIconBox(element));
+            });
+        }
+    });
 });
+
 
 // FUNZIONI
 // Funzione per creare un box
