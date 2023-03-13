@@ -122,7 +122,7 @@ const filtroDom = document.getElementById('filtro');
 
 //Do un colore casuale ad ogni 
 icon.forEach(elemento => {
-    elemento.color = `#${generaNumeroCasuale(100000, 999999)}`
+    elemento.color = `#${generaColoreCasuale()}`
 });
 
 //Di base mostro tutti i box di tutte le value
@@ -173,4 +173,9 @@ function generateIconBox(elemento) {
 //funzione per generare un numero casuale
 function generaNumeroCasuale(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+//Funzione per generare un colore casuale
+function generaColoreCasuale() {
+    return Math.floor(Math.random()*16777215).toString(16);
 }

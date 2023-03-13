@@ -20,6 +20,7 @@
 /* Regole CSS generali */
 html{
     font-family: sans-serif;
+    min-width: 624px;
 }
 body {
     background-color: var(--ms-secondary-color);
@@ -30,20 +31,24 @@ header {
 }
 header h1 {
     color: var(--ms-primary-color);
+    padding-left: 10px;
+    font-size: 50px;
+    font-weight: bolder;
 }
 #header-main {
     background-color: var(--ms-primary-color);
     height: 50px;
-    text-align: center;
-    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #content {
     background-color: var(--ms-secondary-color);
 }
 .ms_box {
     height: 100px;
-    width: 10% ;
-    margin: 50px;
+    width: 200px;
+    margin: 20px 50px;
     background-color: var(--ms-white-color);
     border-radius: 15px;
     box-shadow: 1px 1px var(--ms-black-color);
