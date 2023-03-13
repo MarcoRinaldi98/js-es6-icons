@@ -116,3 +116,20 @@ const icon = [
 		color: 'blue'
 	}
 ];
+
+const contentDom = document.getElementById('content');
+
+icon.forEach(elemento => {
+    contentDom.append(generateIconBox(elemento));
+});
+
+
+// Funzione per creare un box
+function generateIconBox(elemento) {
+    const box = document.createElement('div');
+    box.classList.add('ms_box');
+    box.style.color = `${elemento.color}`;
+    box.innerHTML = `<div><i class="${elemento.prefix}solid ${elemento.prefix}${elemento.name} fs-3"></i></div>
+                    <div class="text-uppercase text-black fw-semibold">${elemento.name}</div>`;
+    return box;
+}
