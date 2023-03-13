@@ -120,17 +120,20 @@ const icon = [
 const contentDom = document.getElementById('content');
 const filtroDom = document.getElementById('filtro');
 
-//Do un colore casuale ad ogni 
+// Genero dinamicamente le option della select in base al type degli oggetti nella lista di icon
+generateSelectOptions();
+
+// Do un colore casuale ad ogni icon
 icon.forEach(elemento => {
     elemento.color = `#${generaColoreCasuale()}`
 });
 
-//Di base mostro tutti i box di tutte le value
+// Di base mostro tutti i box di tutte le value
 icon.forEach(element => {
     contentDom.append(generateIconBox(element));
 });
 
-//Al cambio del contenuto della select mostro solo i box che hanno la value selezionata
+// Al cambio del contenuto della select mostro solo i box che hanno la value selezionata
 filtroDom.addEventListener('change', function() {
     contentDom.innerHTML = '';
     if (filtroDom.value == 'animal') {       
@@ -156,10 +159,10 @@ filtroDom.addEventListener('change', function() {
             contentDom.append(generateIconBox(element));
         });
     }
+    console.log(filtroDom.value);
 });
 
-
-//FUNZIONI
+// FUNZIONI
 // Funzione per creare un box
 function generateIconBox(elemento) {
     const box = document.createElement('div');
@@ -170,12 +173,19 @@ function generateIconBox(elemento) {
     return box;
 }
 
-//funzione per generare un numero casuale
-function generaNumeroCasuale(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-//Funzione per generare un colore casuale
+// Funzione per generare un colore casuale
 function generaColoreCasuale() {
     return Math.floor(Math.random()*16777215).toString(16);
+}
+
+// Funzione per generare le option della select
+function generateSelectOptions() {
+    let optionArray = [];
+    icon.forEach(element => {
+        if(!optionArray.includes(element.type)) {
+            optionArray.push(element.type);
+            filtroDom.innerHTML += `<option value="${element.type}">${element.type}</option>`;
+        }
+    });
+    return optionArray;
 }

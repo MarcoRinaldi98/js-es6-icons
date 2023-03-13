@@ -57,8 +57,8 @@ header h1 {
     align-items: center;
     justify-content: center;
 }
-.ms_color {
-    color: black;
+i {
+    text-shadow: 1px 1px var(--ms-black-color);
 }
 
 
