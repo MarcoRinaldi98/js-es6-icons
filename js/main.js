@@ -120,11 +120,17 @@ const icon = [
 const contentDom = document.getElementById('content');
 const filtroDom = document.getElementById('filtro');
 
+//Do un colore casuale ad ogni 
+icon.forEach(elemento => {
+    elemento.color = `#${generaNumeroCasuale(100000, 999999)}`
+});
 
+//Di base mostro tutti i box di tutte le value
 icon.forEach(element => {
     contentDom.append(generateIconBox(element));
 });
 
+//Al cambio del contenuto della select mostro solo i box che hanno la value selezionata
 filtroDom.addEventListener('change', function() {
     contentDom.innerHTML = '';
     if (filtroDom.value == 'animal') {       
@@ -162,4 +168,9 @@ function generateIconBox(elemento) {
     box.innerHTML = `<div><i class="${elemento.prefix}solid ${elemento.prefix}${elemento.name} fs-3"></i></div>
                     <div class="text-uppercase text-black fw-semibold">${elemento.name}</div>`;
     return box;
+}
+
+//funzione per generare un numero casuale
+function generaNumeroCasuale(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
