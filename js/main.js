@@ -118,12 +118,42 @@ const icon = [
 ];
 
 const contentDom = document.getElementById('content');
+const filtroDom = document.getElementById('filtro');
 
-icon.forEach(elemento => {
-    contentDom.append(generateIconBox(elemento));
+
+icon.forEach(element => {
+    contentDom.append(generateIconBox(element));
+});
+
+filtroDom.addEventListener('change', function() {
+    contentDom.innerHTML = '';
+    if (filtroDom.value == 'animal') {       
+        icon.filter(element => {
+            if (element.type == 'animal') {
+                contentDom.append(generateIconBox(element));
+            }
+        });
+    } else if (filtroDom.value == 'vegetable') {       
+        icon.filter(element => {
+            if (element.type == 'vegetable') {
+                contentDom.append(generateIconBox(element));
+            }
+        });
+    } else if (filtroDom.value == 'user') {       
+        icon.filter(element => {
+            if (element.type == 'user') {
+                contentDom.append(generateIconBox(element));
+            }
+        });
+    } else {
+        icon.forEach(element => {
+            contentDom.append(generateIconBox(element));
+        });
+    }
 });
 
 
+//FUNZIONI
 // Funzione per creare un box
 function generateIconBox(elemento) {
     const box = document.createElement('div');
